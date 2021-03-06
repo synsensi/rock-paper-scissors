@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rock Paper Scissors</title>
+        <script>
+            // Randomly selects computer choice
+            function computerPlay() {
+                let random_value = Math.ceil(Math.random() * 3);
+                if (random_value === 1) {
+                    return "rock";
+                } else if (random_value === 2) {
+                    return "paper";
+                } else if (random_value === 3) {
+                    return "scissors";
+                }
+            }
+
+            function playRound(playerSelection, computerSelection) {
+                // Check if player selection is of type String
+                if (typeof playerSelection != "string") {
+                    return "Value is not a string!";
+                } else {
+                    playerSelection = playerSelection.toLowerCase();
+                }
+
+                // Determine the winner of the round
+                if (playerSelection === "rock") {
+                    if (computerSelection === "rock") {
+                        return "Draw! Rock vs Rock";
+                    } if (computerSelection === "paper") {
+                        return "You Lose! Paper beats Rock";
+                    } if (computerSelection === "scissors") {
+                        return "You Win! Rock beats Scissors";
+                    }
+                } else if (playerSelection === "paper") {
+                    if (computerSelection === "rock") {
+                        return "You Win! Paper beats Rock";
+                    } if (computerSelection === "paper") {
+                        return "Draw! Paper vs Paper";
+                    } if (computerSelection === "scissors") {
+                        return "You Lose! Scissors beats Paper";
+                    }
+                } else if (playerSelection === "scissors") {
+                    if (computerSelection === "rock") {
+                        return "You Lose! Rock beats Scissors";
+                    } if (computerSelection === "paper") {
+                        return "You Win! Scissors beats Paper";
+                    } if (computerSelection === "scissors") {
+                        return "Draw! Scissors vs Scissors";
+                    }
+                } else {
+                    return `The value: '${playerSelection}' is not acceptable`;
+                }
+            }
+
+            function game() {
+                playerSelection = prompt("Enter 'rock', 'paper', 'scissors'...");
+            
+                computerSelection = computerPlay();
+
+                let result = playRound(playerSelection, computerSelection);
+                
+                alert(result);
+            }   
+
+            game();
+        </script>
+    </head>
+    <body>
+    </body>
+</html>
